@@ -35,34 +35,34 @@ for i = 1:nD
     obs(i).eTSi  = 0.0238; % 0.31% meas uncertainty & mean(TSi) = 7.68
 
     % first (T,P)-dependent measurement for pH
-    obs(i).tp(2).T    = 25 ; % degC
-    obs(i).tp(2).eT   = 0.05 ; % from cruise report
-    obs(i).tp(2).P    = 0.0 ; %in(i+ad,1); % NOT in situ
-    obs(i).tp(2).eP   = 0.07 ;
-    obs(i).tp(2).ph   = in(9,i); % total scale
-    obs(i).tp(2).eph  = 0.001 ; % pg 60, cruise report
+    obs(i).tp(1).T    = 25 ; % degC
+    obs(i).tp(1).eT   = 0.05 ; % from cruise report
+    obs(i).tp(1).P    = 0.0 ; %in(i+ad,1); % NOT in situ
+    obs(i).tp(1).eP   = 0.07 ;
+    obs(i).tp(1).ph   = in(9,i); % total scale
+    obs(i).tp(1).eph  = 0.001 ; % pg 60, cruise report
 
     % second (T,P)-dependent measurement for pCO2
-    obs(i).tp(3).T     = 20 ; % degC
-    obs(i).tp(3).eT    = 0.03 ; % from cruise report
-    obs(i).tp(3).P     = 0.0 ; % dbar (surface pressure for pco2)
-    obs(i).tp(3).eP    = 0.07 ;
-    obs(i).tp(3).pco2  = in(10,i); % (µatm)
-    obs(i).tp(3).epco2 =  1.1353; % 0.21% relative std error & avg(pco2) = 540.6128
+    obs(i).tp(2).T     = 20 ; % degC
+    obs(i).tp(2).eT    = 0.03 ; % from cruise report
+    obs(i).tp(2).P     = 0.0 ; % dbar (surface pressure for pco2)
+    obs(i).tp(2).eP    = 0.07 ;
+    obs(i).tp(2).pco2  = in(10,i); % (µatm)
+    obs(i).tp(2).epco2 =  1.1353; % 0.21% relative std error & avg(pco2) = 540.6128
 
     % third (T,P)-dependent measurement for CO32-T
-    obs(i).tp(2).T    = 25 ; % degC
-    obs(i).tp(2).eT   = 0.05 ; % from cruise report
-    obs(i).tp(2).P    = 0.0 ; % NOT in situ
-    obs(i).tp(2).eP   = 0.07 ;
-    obs(i).tp(2).co3  = in(11,i); % (µmol/kg)
-    obs(i).tp(2).eco3 = in(11,1)*0.02;  % 2% from Jon Sharp NEW 1/25/24
+    obs(i).tp(3).T    = 25 ; % degC
+    obs(i).tp(3).eT   = 0.05 ; % from cruise report
+    obs(i).tp(3).P    = 0.0 ; % NOT in situ
+    obs(i).tp(3).eP   = 0.07 ;
+    obs(i).tp(3).co3  = in(11,i); % (µmol/kg)
+    obs(i).tp(3).eco3 = in(11,1)*0.02;  % 2% from Jon Sharp NEW 1/25/24
 
     % fourth (T,P)-dependent measurement IN SITU
-    obs(i).tp(1).T  = in(2,i); % deg C, CTD temp
-    obs(i).tp(1).eT = 0.02; % ±0.02 degC
-    obs(i).tp(1).P  = in(3,i); % dbar
-    obs(i).tp(1).eP = 0.63; % (max) ± 0.63 dbar
+    obs(i).tp(4).T  = in(2,i); % deg C, CTD temp
+    obs(i).tp(4).eT = 0.02; % ±0.02 degC
+    obs(i).tp(4).P  = in(3,i); % dbar
+    obs(i).tp(4).eP = 0.63; % (max) ± 0.63 dbar
 end
 
 obs_backup = obs;
