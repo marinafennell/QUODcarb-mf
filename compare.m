@@ -189,137 +189,137 @@ function [out] = compare(obs,est,opt,tpopt,pair,fname)
             end
 
             % exit struct
-            out.TA      = OUT(1);
-            out.eTA     = err(1); % sigma, not precision
-            out.TC      = OUT(2);
-            out.eTC     = err(2);
-            out.TB      = OUT(93);
-            out.TF      = OUT(94);
-            out.TS      = OUT(95);
-            out.TP      = OUT(96);
-            out.TSi     = OUT(97);
-            out.TNH4    = OUT(98);
-            out.TH2S    = OUT(99);
-            out.CAL     = OUT(100); % TCa
-            out.ph      = OUT(21);
-            out.eh      = (err(13)*1e-9); % was nano units
-            out.eph     = (out.eh/(10^(-out.ph)))*(1/log(10)); % dph = (-1/ln(10))*(dH/H) from Orr's 'errors'
-            out.ph_sws  = OUT(44);
-            out.ph_free = OUT(45);
-            out.ph_nbs  = OUT(46);
-            out.ph_tot  = OUT(43);
-            out.pfH     = -log10(OUT(101));
-            out.pco2    = OUT(22);
-            out.epco2   = err(14);
-            out.co3     = OUT(25);
-            out.eco3    = err(17);
-            out.pK0     = p(OUT(78));
-            out.epK0    = epK0; % not an output of 'errors'
-            out.pK1     = p(OUT(79));
-            out.epK1    = epK1; % not an output of 'errors'
-            out.pK2     = p(OUT(80));
-            out.epK2    = epK2; % not an output of 'errors'
-            out.pKw     = p(OUT(83));
-            out.epKw    = epKw; % not an output of 'errors'
-            out.pKb     = p(OUT(84));
-            out.epKb    = epKb; % not an output of 'errors'
-            out.pKs     = p(OUT(86));
-            out.pKf     = p(OUT(85));
-            out.pKp1    = p(OUT(87));
-            out.pKp2    = p(OUT(88));
-            out.pKp3    = p(OUT(89));
-            out.pKSi    = p(OUT(90));
-            out.pKnh4   = p(OUT(91));
-            out.pKh2s   = p(OUT(92));
-            out.OmegaAr     = OUT(36);
-            out.eOmegaAr    = err(21);
-            out.OmegaCa     = OUT(35);
-            out.eOmegaCa    = err(20);
-            out.Rev         = OUT(34);
+            out(i).TA      = OUT(1);
+            out(i).eTA     = err(1); % sigma, not precision
+            out(i).TC      = OUT(2);
+            out(i).eTC     = err(2);
+            out(i).TB      = OUT(93);
+            out(i).TF      = OUT(94);
+            out(i).TS      = OUT(95);
+            out(i).TP      = OUT(96);
+            out(i).TSi     = OUT(97);
+            out(i).TNH4    = OUT(98);
+            out(i).TH2S    = OUT(99);
+            out(i).CAL     = OUT(100); % TCa
+            out(i).ph      = OUT(21);
+            out(i).eh      = (err(13)*1e-9); % was nano units
+            out(i).eph     = (out(i).eh/(10^(-out(i).ph)))*(1/log(10)); % dph = (-1/ln(10))*(dH/H) from Orr's 'errors'
+            out(i).ph_sws  = OUT(44);
+            out(i).ph_free = OUT(45);
+            out(i).ph_nbs  = OUT(46);
+            out(i).ph_tot  = OUT(43);
+            out(i).pfH     = -log10(OUT(101));
+            out(i).pco2    = OUT(22);
+            out(i).epco2   = err(14);
+            out(i).co3     = OUT(25);
+            out(i).eco3    = err(17);
+            out(i).pK0     = p(OUT(78));
+            out(i).epK0    = epK0; % not an output of 'errors'
+            out(i).pK1     = p(OUT(79));
+            out(i).epK1    = epK1; % not an output of 'errors'
+            out(i).pK2     = p(OUT(80));
+            out(i).epK2    = epK2; % not an output of 'errors'
+            out(i).pKw     = p(OUT(83));
+            out(i).epKw    = epKw; % not an output of 'errors'
+            out(i).pKb     = p(OUT(84));
+            out(i).epKb    = epKb; % not an output of 'errors'
+            out(i).pKs     = p(OUT(86));
+            out(i).pKf     = p(OUT(85));
+            out(i).pKp1    = p(OUT(87));
+            out(i).pKp2    = p(OUT(88));
+            out(i).pKp3    = p(OUT(89));
+            out(i).pKSi    = p(OUT(90));
+            out(i).pKnh4   = p(OUT(91));
+            out(i).pKh2s   = p(OUT(92));
+            out(i).OmegaAr     = OUT(36);
+            out(i).eOmegaAr    = err(21);
+            out(i).OmegaCa     = OUT(35);
+            out(i).eOmegaCa    = err(20);
+            out(i).Rev         = OUT(34);
         
             % exit matrix at chosen tp temp
             A = [];
             fprintf(fid,'%s,',' ');
             fprintf(fid,'%s,',' ');
             fprintf(fid,'%0.16f, %0.16f, %0.16f, %0.16f,', ... % TA
-                out.TA,  est(i).TA, out.eTA, est(i).eTA);
+                out(i).TA,  est(i).TA, out(i).eTA, est(i).eTA);
             fprintf(fid,'%0.16f, %0.16f, %0.16f, %0.16f,', ... % TC
-                out.TC,  est(i).TC, out.eTC, est(i).eTC);
+                out(i).TC,  est(i).TC, out(i).eTC, est(i).eTC);
             fprintf(fid,'%0.16f, %0.16f, %0.16f, %0.16f,', ... % pCO2
-                out.pco2,  est(i).tp(tpopt).pco2, ...
-                out.epco2, est(i).tp(tpopt).epco2);
+                out(i).pco2,  est(i).tp(tpopt).pco2, ...
+                out(i).epco2, est(i).tp(tpopt).epco2);
             fprintf(fid,'%0.16f, %0.16f, %0.16f, %0.16f,', ... % CO3
-                out.co3,  est(i).tp(tpopt).co3,  ...
-                out.eco3, est(i).tp(tpopt).eco3);
+                out(i).co3,  est(i).tp(tpopt).co3,  ...
+                out(i).eco3, est(i).tp(tpopt).eco3);
             fprintf(fid,'%0.16f, %0.16f, %0.16f, %0.16f,', ... % ph
-                out.ph,  est(i).tp(tpopt).ph, ...
-                out.eph, est(i).tp(tpopt).eph);
+                out(i).ph,  est(i).tp(tpopt).ph, ...
+                out(i).eph, est(i).tp(tpopt).eph);
             fprintf(fid,'%0.16f, %0.16f,',... % ph_free
-                out.ph_free, est(i).tp(tpopt).ph_free, est(i).tp(tpopt).eph_free);
+                out(i).ph_free, est(i).tp(tpopt).ph_free, est(i).tp(tpopt).eph_free);
             fprintf(fid,'%0.16f, %0.16f, %0.16f,',... % ph_tot
-                out.ph_tot, est(i).tp(tpopt).ph_tot, est(i).tp(tpopt).eph);
+                out(i).ph_tot, est(i).tp(tpopt).ph_tot, est(i).tp(tpopt).eph);
             fprintf(fid,'%0.16f, %0.16f, %0.16f,',... % ph_sws
-                out.ph_sws,est(i).tp(tpopt).ph_sws,est(i).tp(tpopt).eph);
+                out(i).ph_sws,est(i).tp(tpopt).ph_sws,est(i).tp(tpopt).eph);
             fprintf(fid,'%0.16f, %0.16f, %0.16f,',... % ph_nbs
-                out.ph_nbs, est(i).tp(tpopt).ph_nbs, est(i).tp(tpopt).eph);
+                out(i).ph_nbs, est(i).tp(tpopt).ph_nbs, est(i).tp(tpopt).eph);
             fprintf(fid,'%0.16f, %0.16f, %0.16f,',... % pfH
-                out.pfH, est(i).tp(tpopt).pfH,  est(i).tp(tpopt).epfH);
+                out(i).pfH, est(i).tp(tpopt).pfH,  est(i).tp(tpopt).epfH);
             fprintf(fid,'%0.16f, %0.16f, %0.16f, %0.16f,', ... % pK0
-                out.pK0,  est(i).tp(tpopt).pK0, ...
-                out.epK0, est(i).tp(tpopt).epK0);
+                out(i).pK0,  est(i).tp(tpopt).pK0, ...
+                out(i).epK0, est(i).tp(tpopt).epK0);
             fprintf(fid,'%0.16f, %0.16f, %0.16f, %0.16f,', ... % pK1
-                out.pK1,  est(i).tp(tpopt).pK1, ...
-                out.epK1, est(i).tp(tpopt).epK1);
+                out(i).pK1,  est(i).tp(tpopt).pK1, ...
+                out(i).epK1, est(i).tp(tpopt).epK1);
             fprintf(fid,'%0.16f, %0.16f, %0.16f, %0.16f,', ... % pK2
-                out.pK2,  est(i).tp(tpopt).pK2, ...
-                out.epK2, est(i).tp(tpopt).epK2);
+                out(i).pK2,  est(i).tp(tpopt).pK2, ...
+                out(i).epK2, est(i).tp(tpopt).epK2);
             fprintf(fid,'%0.16f, %0.16f, %0.16f, %0.16f,', ... % pKw
-                out.pKw,  est(i).tp(tpopt).pKw, ...
-                out.epKw, est(i).tp(tpopt).epKw);
+                out(i).pKw,  est(i).tp(tpopt).pKw, ...
+                out(i).epKw, est(i).tp(tpopt).epKw);
             if opt.Revelle == 1
                 fprintf(fid,'%0.16f, %0.16f, ', ... % Revelle
-                out.Rev, est(i).tp(tpopt).Revelle ); % est(i).tp(tpopt).eRevelle
+                out(i).Rev, est(i).tp(tpopt).Revelle ); % est(i).tp(tpopt).eRevelle
             end
             fprintf(fid,'%0.16f, %0.16f, %0.16f,', ... % TCa
-                out.CAL, est(i).TCa, est(i).eTCa);
+                out(i).CAL, est(i).TCa, est(i).eTCa);
             fprintf(fid,'%0.16f, %0.16f, %0.16f,', ... % OmegaAr
-                out.OmegaAr, est(i).tp(tpopt).OmegaAr, ...
+                out(i).OmegaAr, est(i).tp(tpopt).OmegaAr, ...
                 est(i).tp(tpopt).eOmegaAr);
             fprintf(fid,'%0.16f, %0.16f, %0.16f,', ... % OmegaCa
-                out.OmegaCa, est(i).tp(tpopt).OmegaCa, ...
+                out(i).OmegaCa, est(i).tp(tpopt).OmegaCa, ...
                  est(i).tp(tpopt).eOmegaCa);
             fprintf(fid,'%0.16f, %0.16f, %0.16f,', ... % TB
-                out.TB,   est(i).TB,   est(i).eTB);
+                out(i).TB,   est(i).TB,   est(i).eTB);
             fprintf(fid,'%0.16f, %0.16f, %0.16f, %0.16f,', ... % pKb
-                out.pKb,  est(i).tp(tpopt).pKb,  ...
-                out.epKb, est(i).tp(tpopt).epKb);
+                out(i).pKb,  est(i).tp(tpopt).pKb,  ...
+                out(i).epKb, est(i).tp(tpopt).epKb);
             fprintf(fid,'%0.16f, %0.16f, %0.16f,', ... % TS
-                out.TS,   est(i).TS,   est(i).eTS);
-            fprintf(fid,'%0.16f, %0.16f, %0.16f,', out.pKs, ... % pKs
+                out(i).TS,   est(i).TS,   est(i).eTS);
+            fprintf(fid,'%0.16f, %0.16f, %0.16f,', out(i).pKs, ... % pKs
                 est(i).tp(tpopt).pKs, est(i).tp(tpopt).epKs); 
             fprintf(fid,'%0.16f, %0.16f, %0.16f,', ... % TF
-                out.TF,   est(i).TF,   est(i).eTF);
-            fprintf(fid,'%0.16f, %0.16f, %0.16f,', out.pKf, ... % pKf
+                out(i).TF,   est(i).TF,   est(i).eTF);
+            fprintf(fid,'%0.16f, %0.16f, %0.16f,', out(i).pKf, ... % pKf
                 est(i).tp(tpopt).pKf, est(i).tp(tpopt).epKf); 
             fprintf(fid,'%0.16f, %0.16f, %0.16f,', ... % TP
-                out.TP,   est(i).TP,   est(i).eTP);
-            fprintf(fid,'%0.16f, %0.16f, %0.16f,', out.pKp1, ... % pKp1
+                out(i).TP,   est(i).TP,   est(i).eTP);
+            fprintf(fid,'%0.16f, %0.16f, %0.16f,', out(i).pKp1, ... % pKp1
                 est(i).tp(tpopt).pKp1, est(i).tp(tpopt).epKp1);
-            fprintf(fid,'%0.16f, %0.16f, %0.16f,', out.pKp2, ... % pKp2
+            fprintf(fid,'%0.16f, %0.16f, %0.16f,', out(i).pKp2, ... % pKp2
                 est(i).tp(tpopt).pKp2, est(i).tp(tpopt).epKp2);
-            fprintf(fid,'%0.16f, %0.16f, %0.16f, ', out.pKp3, ... % pKp3
+            fprintf(fid,'%0.16f, %0.16f, %0.16f, ', out(i).pKp3, ... % pKp3
                 est(i).tp(tpopt).pKp3, est(i).tp(tpopt).epKp3); 
             fprintf(fid,'%0.16f, %0.16f, %0.16f,', ... % TSi
-                out.TSi,  est(i).TSi,   est(i).eTSi);
-            fprintf(fid,'%0.16f, %0.16f, %0.16f,', out.pKSi, ... % pKsi
+                out(i).TSi,  est(i).TSi,   est(i).eTSi);
+            fprintf(fid,'%0.16f, %0.16f, %0.16f,', out(i).pKSi, ... % pKsi
                 est(i).tp(tpopt).pKsi, est(i).tp(tpopt).epKsi); 
             fprintf(fid,'%0.16f, %0.16f, %0.16f, ', ... % TNH4
-                out.TNH4, est(i).TNH4,   est(i).eTNH4);
-            fprintf(fid,'%0.16f, %0.16f, %0.16f,', out.pKnh4, ... % pKnh4
+                out(i).TNH4, est(i).TNH4,   est(i).eTNH4);
+            fprintf(fid,'%0.16f, %0.16f, %0.16f,', out(i).pKnh4, ... % pKnh4
                 est(i).tp(tpopt).pKnh4, est(i).tp(tpopt).epKnh4); 
-            fprintf(fid,'%0.16f, %0.16f, %0.16f, ', out.TH2S, ... % TH2S
+            fprintf(fid,'%0.16f, %0.16f, %0.16f, ', out(i).TH2S, ... % TH2S
                 est(i).TH2S,   est(i).eTH2S);                     
-            fprintf(fid,'%0.16f, %0.16f, %0.16f ', out.pKh2s, ...  % pKh2s
+            fprintf(fid,'%0.16f, %0.16f, %0.16f ', out(i).pKh2s, ...  % pKh2s
                 est(i).tp(tpopt).pKh2s, est(i).tp(tpopt).epKh2s);
             fprintf(fid,'\n');
         end
